@@ -59,8 +59,8 @@
 			isa = PBXGroup;
 			children = (
 				AAF694C91ED4F8D3008F5E09 /* AppDelegate.h */,
-				AAF694C61ED4F8D3008F5E09 /* Supporting Files */,
 				AAF694CA1ED4F8D3008F5E09 /* AppDelegate.m */,
+				AAF694C61ED4F8D3008F5E09 /* Supporting Files */,
 			);
 			path = UserDefaultsDemo;
 			sourceTree = "<group>";
@@ -314,6 +314,7 @@
 				AAF694DC1ED4F8D3008F5E09 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
