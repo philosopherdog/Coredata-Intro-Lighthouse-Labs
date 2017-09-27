@@ -7,7 +7,7 @@
 //
 
 #import "AddViewController.h"
-#import "AppDelegate.h"
+#import "DataHandler.h"
 
 @interface AddViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *fName;
@@ -25,11 +25,8 @@
   NSString *fName = self.fName.text;
   NSString *lName = self.lName.text;
   int16_t age = [self.age.text intValue];
-  Person *person = [[Person alloc] initWithContext:self.context];
-  person.firstName = fName;
-  person.lastName = lName;
-  person.age = age;
-  [self.delegate saveContext];
+  NSDictionary *data = @{@"fName": fName, @"lName": lName, @"age": @(age)};
+  [self.dataHandler savePerson:data];
   [self.navigationController popViewControllerAnimated:YES];
 }
 

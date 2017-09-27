@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA6D53551F7C22C3004179DB /* DataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6D53541F7C22C3004179DB /* DataHandler.m */; };
 		AAD612C11F1E550800E78AD3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD612C01F1E550800E78AD3 /* main.m */; };
 		AAD612C41F1E550800E78AD3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD612C31F1E550800E78AD3 /* AppDelegate.m */; };
 		AAD612CA1F1E550800E78AD3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAD612C81F1E550800E78AD3 /* Main.storyboard */; };
@@ -18,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AA6D53531F7C22C3004179DB /* DataHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataHandler.h; sourceTree = "<group>"; };
+		AA6D53541F7C22C3004179DB /* DataHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataHandler.m; sourceTree = "<group>"; };
 		AAD612BC1F1E550800E78AD3 /* CRUD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CRUD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD612C01F1E550800E78AD3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AAD612C21F1E550800E78AD3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -69,6 +72,8 @@
 				AAD612DA1F1E568A00E78AD3 /* TableViewController.m */,
 				AAD612DC1F1E575C00E78AD3 /* AddViewController.h */,
 				AAD612DD1F1E575C00E78AD3 /* AddViewController.m */,
+				AA6D53531F7C22C3004179DB /* DataHandler.h */,
+				AA6D53541F7C22C3004179DB /* DataHandler.m */,
 				AAD612CB1F1E550800E78AD3 /* CRUD.xcdatamodeld */,
 				AAD612BF1F1E550800E78AD3 /* Supporting Files */,
 			);
@@ -163,6 +168,7 @@
 				AAD612C41F1E550800E78AD3 /* AppDelegate.m in Sources */,
 				AAD612C11F1E550800E78AD3 /* main.m in Sources */,
 				AAD612CD1F1E550800E78AD3 /* CRUD.xcdatamodeld in Sources */,
+				AA6D53551F7C22C3004179DB /* DataHandler.m in Sources */,
 				AAD612DB1F1E568A00E78AD3 /* TableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -324,6 +330,7 @@
 				AAD612D81F1E550800E78AD3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

@@ -7,10 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-@class AppDelegate;
-#import "Person+CoreDataClass.h"
+@class DataHandler;
 
 @interface AddViewController : UIViewController
-@property (nonatomic,weak) AppDelegate *delegate;
-@property (nonatomic) NSManagedObjectContext *context;
+@property (nonatomic) DataHandler *dataHandler;
 @end

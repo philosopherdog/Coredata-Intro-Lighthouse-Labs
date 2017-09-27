@@ -8,24 +8,31 @@
 
 #import "TableViewController.h"
 #import "Person+CoreDataClass.h"
-#import "AppDelegate.h"
 #import "AddViewController.h"
+#import "DataHandler.h"
 
 @interface TableViewController ()<UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) NSArray<Person*>*persons;
-@property (nonatomic) NSManagedObjectContext *context;
-@property (nonatomic, weak) AppDelegate *delegate;
+@property (nonatomic) DataHandler *dataHandler;
 @end
 
 @implementation TableViewController
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  self.delegate = ((AppDelegate*)[[UIApplication sharedApplication] delegate]);
-  self.context = self.delegate.persistentContainer.viewContext;
+  self.dataHandler = [DataHandler new];
   [self fetchData];
   [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(fetchData) name:NSManagedObjectContextDidSaveNotification object:nil];
+}
+
+- (void)setPersons:(NSArray<Person *> *)persons {
+  _persons = persons;
+  [self.tableView reloadData];
+}
+
+- (void)fetchData {
+  self.persons = [self.dataHandler fetchData];
 }
 
 #pragma mark - DataSource
@@ -47,21 +54,13 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
   if ([segue.identifier isEqualToString:@"AddViewController"]) {
     AddViewController *avc = segue.destinationViewController;
-    avc.delegate = self.delegate;
-    avc.context = self.context;
+    avc.dataHandler = self.dataHandler;
   }
 }
 
 #pragma mark - Core Data
 
-- (void)fetchData {
-  NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Person"];
-  NSSortDescriptor *lastNameDesc = [NSSortDescriptor sortDescriptorWithKey:@"lastName" ascending:NO];
-  request.sortDescriptors = @[lastNameDesc];
-  NSArray <Person *>*persons = [self.context executeFetchRequest:request error:nil];
-  self.persons = persons;
-  [self.tableView reloadData];
-}
+
 
 - (void)dealloc {
   [NSNotificationCenter.defaultCenter removeObserver:self];
