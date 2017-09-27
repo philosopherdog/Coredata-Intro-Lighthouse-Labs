@@ -16,14 +16,14 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-//    [self testAccessDocumentsFolder];
-  [self testAccessDocumentsFolderSecondWay];
-  [self testSaveStringToDisk];
-  [self testReadTextFileFromDisk];
-  [self testWriteImageToTempFolder];
-  [self testReadImageFromTempFolder];
+//  [self testAccessDocumentsFolder];
+//  [self testAccessDocumentsFolderSecondWay];
+//  [self testSaveStringToDisk];
+//  [self testReadTextFileFromDisk];
+//  [self testWriteImageToTempFolder];
+//  [self testReadImageFromTempFolder];
   [self writeDictionaryToFileSystem];
-  [self readDictionaryfromFileSystem];
+//  [self readDictionaryfromFileSystem];
   return YES;
 }
 
@@ -55,7 +55,11 @@
 
 - (void)testAccessDocumentsFolderSecondWay {
   NSFileManager *fileManager = [NSFileManager defaultManager];
-  NSURL *libraryURL = [fileManager URLForDirectory:NSLibraryDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
+  NSURL *libraryURL = [fileManager URLForDirectory:NSLibraryDirectory
+                                          inDomain:NSUserDomainMask
+                                 appropriateForURL:nil
+                                            create:NO
+                                             error:nil];
   NSLog(@"\n%d: %@", __LINE__, libraryURL);
   
   NSString *libraryPathComponent = [libraryURL lastPathComponent];
