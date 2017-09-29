@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "Person+CoreDataClass.h"
+#import "Dog+CoreDataClass.h"
 
 @interface AppDelegate ()
 @property (nonatomic, strong) NSManagedObjectContext *context;
@@ -43,6 +44,8 @@
 //  [self fetchWithPredicate];
 //  [self fetchWithPredicateAndUpdate];
 //  [self deletePerson];
+//  [self createDog];
+//  [self fetchRelationships];
   return YES;
 }
 
@@ -90,7 +93,7 @@
 
 - (Person *)fetchWithPredicate {
   NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Person"];
-  NSPredicate *predicate = [NSPredicate predicateWithFormat:@"age >= 70"];
+  NSPredicate *predicate = [NSPredicate predicateWithFormat:@"age > 79"];
   request.predicate = predicate;
   NSArray <Person *>*persons = [self.context executeFetchRequest:request error:nil];
   [self printEntities:persons];
@@ -118,6 +121,35 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
   [self saveContext];
 }
+
+#pragma mark - RelationShips
+- (void)createDog {
+  Dog *dog1 = [[Dog alloc] initWithContext:self.context];
+  dog1.name = @"Fred";
+  Dog *dog2 = [[Dog alloc] initWithContext:self.context];
+  dog2.name = @"Jimmy";
+  Person *iggy = [self fetchWithPredicate];
+  if (iggy == nil) {
+    return;
+  }
+  iggy.dog = [NSOrderedSet orderedSetWithArray:@[dog2, dog1]];
+  [self saveContext];
+}
+
+- (void)fetchPersonsAndRelatedDogs {
+  NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Person"];
+  NSArray <Person *>*persons = [self.context executeFetchRequest:request error:nil];
+  for (Person *person in persons) {
+    NSString *fName = person.firstName;
+    for (Dog *dog in person.dog.array) {
+      NSString *dogName = dog.name;
+      NSLog(@"%@ has a dog named %@", fName, dogName);
+    }
+  }
+}
+
+
+
 
 
 #pragma mark - Core Data stack
